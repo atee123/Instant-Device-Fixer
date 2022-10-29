@@ -6,10 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
+
 
 class UserController extends Controller
 {
@@ -42,12 +40,7 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        // $validated = $request->validate([
-        //     'name' => 'required|max:191',
-        //     'username' => 'required|string|unique:users,username',
-        //     'email' => 'required|email|unique:users,email',
-        //     'password' => 'required|min:8|same:confirm_password',
-        // ]);
+
         $validated = $request->validated();
         $validated['role'] = "staff";
         $validated['password'] = Hash::make($request->password);
