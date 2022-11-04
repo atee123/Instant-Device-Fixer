@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\PickupController as AdminPickupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,5 +24,6 @@ Route::domain(env('domain'))->group(function () {
     Route::group(['prefix' => 'admin', 'middleware' => 'is.admin', 'as' => 'admin.'], function () {
         Route::resource('dashboard', AdminDashboardController::class);
         Route::resource('users', AdminUserController::class);
+        Route::resource('pickups', AdminPickupController::class);
     });
 });
