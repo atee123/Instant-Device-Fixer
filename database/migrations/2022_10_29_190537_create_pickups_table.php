@@ -15,7 +15,7 @@ class CreatePickupsTable extends Migration
     {
         Schema::create('pickups', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['new', 'repeating']);
+            $table->enum('pickup_type', ['new', 'repeating']);
             $table->string("customer_name");
             $table->bigInteger("mobile_number");
             $table->bigInteger("business_number");
@@ -27,8 +27,9 @@ class CreatePickupsTable extends Migration
             $table->text("device_fault");
             $table->text("device_pickup_address");
             $table->enum("pickup_country_state", ['Abu Dhabi', 'Dubai', 'Sharjah', 'Ajman', 'Umm Al-Quwain', 'Fujairah', 'Al Ain', 'Ras al Khaimah']);
-            $table->text("delivery_country_state");
             $table->text("delivery_address");
+            $table->enum("delivery_country_state", ['Abu Dhabi', 'Dubai', 'Sharjah', 'Ajman', 'Umm Al-Quwain', 'Fujairah', 'Al Ain', 'Ras al Khaimah']);
+            $table->date("pickup_date");
             $table->date("delivery_date");
             $table->string("messenger");
             $table->text("comments");
